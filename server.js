@@ -4,6 +4,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const { pool } = require("./Model/db"); // Import connection pool
 const studentRoutes = require("./Routes/studentRoutes"); // Ensure correct path
+const gradeRoutes = require("./Routes/gradeRoutes");
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,7 @@ const port = 4149;
 
 // **Routes**
 app.use('/api', studentRoutes);
+app.use('/api', gradeRoutes);
 
 // **Signup Route (Register User)**
 app.post("/signup", async (req, res) => {
