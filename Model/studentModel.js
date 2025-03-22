@@ -5,9 +5,9 @@ const StudentModel = {
   getStudentByUserId: async (userId) => {
     try {
       const query = `
-        SELECT students.*, program_name AS program_name 
+        SELECT students.*, programs.program_name AS program_name 
         FROM students 
-        JOIN programs ON students.program_id = pro  gram_id 
+        JOIN programs ON students.program_id = programs.id 
         WHERE students.user_id = ?;
       `;
       
@@ -33,14 +33,4 @@ const StudentModel = {
   },
 };
 
-exports.getStudentByUserId = async (userId) => {
-    try {
-      const [rows] = await db.execute("SELECT * FROM students WHERE user_id = ?", [userId]);
-      return rows.length > 0 ? rows[0] : null; // Return student data or null if not found
-    } catch (error) {
-      console.error("Database error:", error);
-      throw error;
-    }
-  };
-  
 module.exports = StudentModel;
