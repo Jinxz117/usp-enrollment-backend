@@ -6,6 +6,7 @@ const { pool } = require("./Model/db"); // Import connection pool
 const studentRoutes = require("./Routes/studentRoutes"); // Ensure correct path
 const gradeRoutes = require("./Routes/gradeRoutes");
 const financeRoutes = require("./Routes/financeRoutes");
+const enrollmentRoutes = require("./Routes/enrollmentRoutes");
 
 const app = express();
 app.use(express.json());
@@ -16,8 +17,8 @@ const port = 4149;
 // Routes
 app.use('/api', studentRoutes);
 app.use('/api', gradeRoutes);
-//app.use("/finances", financeRoutes);
 app.use("/api/finances", financeRoutes);
+app.use('/api', enrollmentRoutes);
 
 
 // Signup Route (Register User)
