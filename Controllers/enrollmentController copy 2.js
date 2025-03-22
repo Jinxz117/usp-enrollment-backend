@@ -11,7 +11,6 @@ exports.getEligibleCoursesForEnrollment = async (req, res) => {
         g.student_id, 
         g.course_id, 
         c.course_code, 
-        c.course_name,  -- Include course name
         g.grade, 
         g.status
     FROM grades g
@@ -39,9 +38,7 @@ exports.getEligibleCoursesForEnrollment = async (req, res) => {
       s.last_name,
       p.program_name,
       nc.course_code AS course,
-      c.course_name AS course_name,  -- Return course name from courses table
       nc.prerequisite_course_code AS prerequisite_course,
-      c.prerequisite AS prerequisite_course_name,  -- Use prerequisite from courses table
       CASE 
           WHEN sc.course_code IS NOT NULL THEN 'Completed'
           WHEN ec.enrollment_status = 'enrolled' THEN 'Enrolled'
@@ -54,7 +51,6 @@ exports.getEligibleCoursesForEnrollment = async (req, res) => {
   LEFT JOIN student_courses sc ON sc.student_id = s.id AND sc.course_code = nc.course_code
   LEFT JOIN student_courses scp ON scp.student_id = s.id AND scp.course_code = nc.prerequisite_course_code
   LEFT JOIN enrolled_courses ec ON ec.student_id = s.id AND ec.course_code = nc.course_code
-  LEFT JOIN courses c ON c.course_code = nc.course_code  -- Join courses table to get course name and prerequisite
   WHERE s.id = ? 
   ORDER BY nc.course_code;
 `;
@@ -66,7 +62,6 @@ try {
   console.error("Error fetching eligible courses:", error);
   res.status(500).json({ error: "Failed to fetch eligible courses" });
 }
-
 
 };
 
