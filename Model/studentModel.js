@@ -19,17 +19,18 @@ const StudentModel = {
     }
   },
 
-  
-};
-
-exports.getStudentByUserId = async (userId) => {
+  // Register a new student
+  registerStudent: async (userId, first_name, last_name, dob, email, phone, program_id) => {
     try {
-      const [rows] = await db.execute("SELECT * FROM students WHERE user_id = ?", [userId]);
-      return rows.length > 0 ? rows[0] : null; // Return student data or null if not found
+      const [result] = await db.execute(
+        "INSERT INTO students (user_id, first_name, last_name, dob, email, phone, program_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [userId, first_name, last_name, dob, email, phone, program_id]
+      );
+      return result.insertId;
     } catch (error) {
-      console.error("Database error:", error);
       throw error;
     }
-  };
-  
+  },
+};
+
 module.exports = StudentModel;
