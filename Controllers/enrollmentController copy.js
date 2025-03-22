@@ -6,64 +6,52 @@ exports.getEligibleCoursesForEnrollment = async (req, res) => {
   const studentId = req.params.studentId;  // Retrieve student ID from URL parameter
 
   const query = `
-  WITH student_courses AS (
+    WITH student_courses AS (
+      SELECT 
+          g.student_id, 
+          g.course_id, 
+          c.course_code, 
+          g.grade, 
+          g.status
+      FROM grades g
+      JOIN courses c ON g.course_id = c.id
+      WHERE g.status = 'Pass'
+    ),
+    needed_courses AS (
+      SELECT 
+          pr.program_id, 
+          pr.course_code, 
+          pr.prerequisite_course_code
+      FROM program_requirements pr
+    )
     SELECT 
-        g.student_id, 
-        g.course_id, 
-        c.course_code, 
-        g.grade, 
-        g.status
-    FROM grades g
-    JOIN courses c ON g.course_id = c.id
-    WHERE g.status = 'Pass'
-  ),
-  needed_courses AS (
-    SELECT 
-        pr.program_id, 
-        pr.course_code, 
-        pr.prerequisite_course_code
-    FROM program_requirements pr
-  ),
-  enrolled_courses AS (
-    SELECT 
-        e.student_id, 
-        c.course_code, 
-        e.status AS enrollment_status
-    FROM enrollments e
-    JOIN courses c ON e.course_id = c.id
-  )
-  SELECT 
-      s.id AS student_id,
-      s.first_name,
-      s.last_name,
-      p.program_name,
-      nc.course_code AS course,
-      nc.prerequisite_course_code AS prerequisite_course,
-      CASE 
-          WHEN sc.course_code IS NOT NULL THEN 'Completed'
-          WHEN ec.enrollment_status = 'enrolled' THEN 'Enrolled'
-          WHEN nc.prerequisite_course_code IS NOT NULL AND scp.course_code IS NULL THEN 'Prerequisite Not Met'
-          ELSE 'Pending'
-      END AS status
-  FROM students s
-  JOIN programs p ON s.program_id = p.id
-  JOIN needed_courses nc ON nc.program_id = s.program_id
-  LEFT JOIN student_courses sc ON sc.student_id = s.id AND sc.course_code = nc.course_code
-  LEFT JOIN student_courses scp ON scp.student_id = s.id AND scp.course_code = nc.prerequisite_course_code
-  LEFT JOIN enrolled_courses ec ON ec.student_id = s.id AND ec.course_code = nc.course_code
-  WHERE s.id = ? 
-  ORDER BY nc.course_code;
-`;
+        s.id AS student_id,
+        s.first_name,
+        s.last_name,
+        p.program_name,
+        nc.course_code AS course,
+        nc.prerequisite_course_code AS prerequisite_course,
+        'Pending' AS status
+    FROM students s
+    JOIN programs p ON s.program_id = p.id
+    JOIN needed_courses nc ON nc.program_id = s.program_id
+    LEFT JOIN student_courses sc ON sc.student_id = s.id AND sc.course_code = nc.course_code
+    LEFT JOIN student_courses scp ON scp.student_id = s.id AND scp.course_code = nc.prerequisite_course_code
+    WHERE s.id = ? 
+    AND sc.course_code IS NULL 
+    AND (nc.prerequisite_course_code IS NULL OR scp.course_code IS NOT NULL)
+    ORDER BY nc.course_code;
+  `;
 
-try {
-  const [rows] = await pool.promise().query(query, [studentId]);
-  res.json(rows);  // Return the data to the frontend
-} catch (error) {
-  console.error("Error fetching eligible courses:", error);
-  res.status(500).json({ error: "Failed to fetch eligible courses" });
-}
-
+  try {
+    const [rows] = await pool.promise().query(query, [studentId]);
+    res.json(rows);  // Return the data to the frontend
+  } catch (error) {
+    console.error("Error fetching eligible courses:", error);
+    res.status(500).json({ error: "Failed to fetch eligible courses" });
+  }
 };
+
 
 
 // ✅ Enroll student in a course

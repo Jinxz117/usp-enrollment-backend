@@ -7,6 +7,7 @@ const studentRoutes = require("./Routes/studentRoutes"); // Ensure correct path
 const gradeRoutes = require("./Routes/gradeRoutes");
 const financeRoutes = require("./Routes/financeRoutes");
 const enrollmentRoutes = require("./Routes/enrollmentRoutes");
+const programRequirementRoutes = require("./Routes/programRequirementRoutes");
 
 const app = express();
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use('/api', studentRoutes);
 app.use('/api', gradeRoutes);
 app.use("/api/finances", financeRoutes);
 app.use('/api', enrollmentRoutes);
+app.use('/api/program-requirements', programRequirementRoutes);
 
 
 // Signup Route (Register User)
