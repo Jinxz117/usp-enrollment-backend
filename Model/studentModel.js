@@ -4,7 +4,15 @@ const StudentModel = {
   // Get student by user ID
   getStudentByUserId: async (userId) => {
     try {
-      const [rows] = await db.execute("SELECT * FROM students WHERE user_id = ?", [userId]);
+      const query = `
+        SELECT students.*, program_name AS program_name 
+        FROM students 
+        JOIN programs ON students.program_id = pro  gram_id 
+        WHERE students.user_id = ?;
+      `;
+      
+      const [rows] = await db.execute(query, [userId]);
+      
       return rows.length ? rows[0] : null;
     } catch (error) {
       throw error;
@@ -12,11 +20,11 @@ const StudentModel = {
   },
 
   // Register a new student
-  registerStudent: async (userId, first_name, last_name, dob, email, phone, program) => {
+  registerStudent: async (userId, first_name, last_name, dob, email, phone, program_id) => {
     try {
       const [result] = await db.execute(
-        "INSERT INTO students (user_id, first_name, last_name, dob, email, phone, program) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [userId, first_name, last_name, dob, email, phone, program]
+        "INSERT INTO students (user_id, first_name, last_name, dob, email, phone, program_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [userId, first_name, last_name, dob, email, phone, program_id]
       );
       return result.insertId;
     } catch (error) {
