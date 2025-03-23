@@ -1,12 +1,24 @@
     const db = require("./db");
 
+    // const financeModel = {
+    // // Get finance record by student ID
+    // getByStudentId: async (studentId) => {
+    //     const query = "SELECT * FROM finances WHERE student_id = ?";
+    //     const [rows] = await db.execute(query, [studentId]);
+    //     return rows.length ? rows[0] : null;
+    // },
+
     const financeModel = {
-    // Get finance record by student ID
-    getByStudentId: async (studentId) => {
-        const query = "SELECT * FROM finances WHERE student_id = ?";
-        const [rows] = await db.execute(query, [studentId]);
-        return rows.length ? rows[0] : null;
-    },
+        // Get all finance records by student ID
+        getByStudentId: async (studentId) => {
+            const query = "SELECT * FROM finances WHERE student_id = ?";
+            const [rows] = await db.execute(query, [studentId]);
+            return rows;  // Return all records as an array (even if empty)
+        },
+    
+    
+ 
+    
 
     // Create a new finance record
     create: async ({ student_id, invoice_number, total_fee, paid_amount, year, semester }) => {
