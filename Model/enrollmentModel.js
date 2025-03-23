@@ -39,6 +39,20 @@ const EnrollmentModel = {
       throw error;
     }
   },
+  //div
+  // Delete an enrollment
+  deleteEnrollment: async (enrollmentId) => {
+  try {
+    const [result] = await db.execute(
+      "DELETE FROM enrollments WHERE id = ?",
+      [enrollmentId]
+    );
+    return result.affectedRows;
+  } catch (error) {
+    throw error;
+  }
+},
 };
+
 
 module.exports = EnrollmentModel;

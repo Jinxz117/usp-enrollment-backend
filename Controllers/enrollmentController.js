@@ -219,3 +219,24 @@ exports.getEligibleCoursesForEnrollment = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch eligible courses" });
   }
 };
+
+
+// div
+exports.deleteEnrollment = async (req, res) => {
+  const enrollmentId = req.params.enrollmentId;
+
+  if (!enrollmentId) {
+    return res.status(400).json({ error: "Enrollment ID is required" });
+  }
+
+  try {
+    const affectedRows = await EnrollmentModel.deleteEnrollment(enrollmentId);
+    if (affectedRows === 0) {
+      return res.status(404).json({ message: "Enrollment not found" });
+    }
+    res.status(200).json({ message: "Enrollment deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting enrollment:", error);
+    res.status(500).json({ message: "Failed to delete enrollment" });
+  }
+};

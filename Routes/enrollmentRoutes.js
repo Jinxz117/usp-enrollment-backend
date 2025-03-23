@@ -17,4 +17,8 @@ router.put("/enrollment-status", enrollmentController.updateEnrollmentStatus);
 // ✅ Get all enrollments for a student
 router.get("/student/:student_id/enrollments", enrollmentController.getStudentEnrollments);
 
+//div
+// Endpoint to delete an enrollment
+router.delete("/enrollment/:enrollmentId", enrollmentController.deleteEnrollment);
+
 module.exports = router;
