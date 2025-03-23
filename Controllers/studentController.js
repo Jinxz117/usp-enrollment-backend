@@ -24,14 +24,14 @@ exports.getStudentById = async (req, res) => {
 
 // ✅ Register a new student
 exports.registerStudent = async (req, res) => {
-  const { user_id, first_name, last_name, dob, email, phone, program } = req.body;
+  const { user_id, first_name, last_name, dob, email, phone, program_id } = req.body;
 
   if (!user_id || !first_name || !last_name || !dob || !email) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
   try {
-    const studentId = await StudentModel.registerStudent(user_id, first_name, last_name, dob, email, phone, program);
+    const studentId = await StudentModel.registerStudent(user_id, first_name, last_name, dob, email, phone, program_id);
     res.status(201).json({ message: "Student registered successfully", studentId });
   } catch (error) {
     console.error("Error registering student:", error);
