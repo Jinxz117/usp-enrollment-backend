@@ -2,7 +2,10 @@ const cors = require("cors");
 require("dotenv").config();
 const express = require("express");
 const bcrypt = require("bcrypt");
-const { pool } = require("./Model/db"); // Import connection pool
+//const { pool } = require("./Model/db"); // Import connection pool
+
+const db = require("./Model/db"); // Import the updated db.js
+
 const studentRoutes = require("./Routes/studentRoutes"); // Ensure correct path
 const gradeRoutes = require("./Routes/gradeRoutes");
 const financeRoutes = require("./Routes/financeRoutes");
@@ -13,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const port = 4149;
+const port = 6969;
 
 // Routes
 app.use('/api', studentRoutes);
@@ -23,51 +26,113 @@ app.use('/api', enrollmentRoutes);
 app.use('/api/program-requirements', programRequirementRoutes);
 
 
-// Signup Route (Register User)
+// // Signup Route (Register User)
+// app.post("/signup", async (req, res) => {
+//   const { email, password, role_id } = req.body;
+
+//   if (!email || !password || !role_id) {
+//     return res.status(400).json({ error: "All fields are required" , code: "SIGNUP_VALIDATION_ERROR"});
+//   }
+
+//   try {
+//     // Check if user already exists
+//     const [existingUser] = await pool.promise().query("SELECT * FROM users WHERE email = ?", [email]);
+//     if (existingUser.length > 0) {
+//       return res.status(400).json({ error: "Email already in use" , code:  "EMAIL_ALREADY_IN_USE" });
+//     }
+
+//     // Hash password
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     // Insert new user
+//     await pool.promise().query(
+//       "INSERT INTO users (email, password, role_id) VALUES (?, ?, ?)", 
+//       [email, hashedPassword, role_id]
+//     );
+
+//     res.status(201).json({ message: "User registered successfully" });
+//   } catch (err) {
+//     console.error("Error registering user:", err);
+//     res.status(500).json({ error: "Failed to register user", code: "SIGNUP_ERROR" });
+//   }
+// });
+
+// // Login Route (Authenticate User)
+// app.post("/login", async (req, res) => {
+//   const { email, password } = req.body;
+
+//   if (!email || !password) {
+//     return res.status(400).json({ error: "Email and password are required", code: "LOGIN_VALIDATION_ERROR" });
+//   }
+
+//   try {
+//     // Find user by email
+//     const [users] = await pool.promise().query("SELECT * FROM users WHERE email = ?", [email]);
+
+//     if (users.length === 0) {
+//       return res.status(401).json({ error: "Invalid email or password", code: "INVALID_CREDENTIALS" });
+//     }
+
+//     const user = users[0];
+
+//     // Compare entered password with hashed password
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) {
+//       return res.status(401).json({ error: "Invalid email or password", code: "INVALID_CREDENTIALS" });
+//     }
+
+//     // Send success response
+//     res.status(200).json({
+//       message: "Login successful",
+//       user: { id: user.id, email: user.email, role_id: user.role_id }
+//     });
+//   } catch (err) {
+//     console.error("Error during login:", err);
+//     res.status(500).json({ error: "Error during login", code: "LOGIN_ERROR" });
+//   }
+// });
+
+// Replace pool.promise().query with db.query
 app.post("/signup", async (req, res) => {
   const { email, password, role_id } = req.body;
 
   if (!email || !password || !role_id) {
-    return res.status(400).json({ error: "All fields are required" });
+    return res.status(400).json({ error: "All fields are required", code: "SIGNUP_VALIDATION_ERROR" });
   }
 
   try {
     // Check if user already exists
-    const [existingUser] = await pool.promise().query("SELECT * FROM users WHERE email = ?", [email]);
+    const [existingUser] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
     if (existingUser.length > 0) {
-      return res.status(400).json({ error: "Email already in use" });
+      return res.status(400).json({ error: "Email already in use", code: "EMAIL_ALREADY_IN_USE" });
     }
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert new user
-    await pool.promise().query(
-      "INSERT INTO users (email, password, role_id) VALUES (?, ?, ?)", 
-      [email, hashedPassword, role_id]
-    );
+    await db.query("INSERT INTO users (email, password, role_id) VALUES (?, ?, ?)", [email, hashedPassword, role_id]);
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
     console.error("Error registering user:", err);
-    res.status(500).json({ error: "Failed to register user" });
+    res.status(500).json({ error: "Failed to register user", code: "SIGNUP_ERROR" });
   }
 });
 
-// Login Route (Authenticate User)
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ error: "Email and password are required" });
+    return res.status(400).json({ error: "Email and password are required", code: "LOGIN_VALIDATION_ERROR" });
   }
 
   try {
     // Find user by email
-    const [users] = await pool.promise().query("SELECT * FROM users WHERE email = ?", [email]);
+    const [users] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
 
     if (users.length === 0) {
-      return res.status(401).json({ error: "Invalid email or password" });
+      return res.status(401).json({ error: "Invalid email or password", code: "INVALID_CREDENTIALS" });
     }
 
     const user = users[0];
@@ -75,29 +140,40 @@ app.post("/login", async (req, res) => {
     // Compare entered password with hashed password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ error: "Invalid email or password" });
+      return res.status(401).json({ error: "Invalid email or password", code: "INVALID_CREDENTIALS" });
     }
 
     // Send success response
     res.status(200).json({
       message: "Login successful",
-      user: { id: user.id, email: user.email, role_id: user.role_id }
+      user: { id: user.id, email: user.email, role_id: user.role_id },
     });
   } catch (err) {
     console.error("Error during login:", err);
-    res.status(500).json({ error: "Error during login" });
+    res.status(500).json({ error: "Error during login", code: "LOGIN_ERROR" });
   }
 });
 
+
 // Test database connection
+// app.get("/test-db", async (req, res) => {
+//   try {
+//     const connection = await pool.promise().getConnection();
+//     res.status(200).json({ message: "Database connected successfully!" });
+//     connection.release();
+//   } catch (error) {
+//     console.error("Database connection failed:", error);
+//     res.status(500).json({ error: "Database connection failed", code: "DB_CONNECTION_ERROR" });
+//   }
+// });
+
 app.get("/test-db", async (req, res) => {
   try {
-    const connection = await pool.promise().getConnection();
+    const [rows] = await db.query("SELECT 1"); // Simple query to test the connection
     res.status(200).json({ message: "Database connected successfully!" });
-    connection.release();
   } catch (error) {
     console.error("Database connection failed:", error);
-    res.status(500).json({ error: "Database connection failed" });
+    res.status(500).json({ error: "Database connection failed", code: "DB_CONNECTION_ERROR" });
   }
 });
 
