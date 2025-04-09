@@ -240,3 +240,60 @@ exports.deleteEnrollment = async (req, res) => {
     res.status(500).json({ message: "Failed to delete enrollment" });
   }
 };
+
+// get eligible courses for enrollment
+exports.getEligibleCoursesForEnrollment1 = async (req, res) => {
+  const studentId = req.params.studentId; // Retrieve student ID from URL parameter
+
+  const query = `
+    WITH student_courses AS (
+      SELECT 
+          g.student_id, 
+          g.course_id, 
+          c.course_code, 
+          c.course_name, 
+          g.grade, 
+          g.status
+      FROM grades g
+      JOIN courses c ON g.course_id = c.id
+      WHERE g.status = 'Pass'
+    ),
+    needed_courses AS (
+      SELECT 
+          pr.program_id, 
+          pr.course_code, 
+          pr.prerequisite_course_code
+      FROM program_requirements pr
+    )
+    SELECT 
+        s.id AS student_id,
+        s.first_name,
+        s.last_name,
+        p.program_name,
+        c.id AS course_id,
+        c.course_code AS course,
+        c.course_name,
+        nc.prerequisite_course_code AS prerequisite_course,
+        'Pending' AS status
+    FROM students s
+    JOIN programs p ON s.program_id = p.id
+    JOIN needed_courses nc ON nc.program_id = s.program_id
+    JOIN courses c ON c.course_code = nc.course_code
+    LEFT JOIN student_courses sc ON sc.student_id = s.id AND sc.course_code = nc.course_code
+    LEFT JOIN student_courses scp ON scp.student_id = s.id AND scp.course_code = nc.prerequisite_course_code
+    LEFT JOIN enrollments e ON e.student_id = s.id AND e.course_id = c.id AND e.status = 'enrolled'
+    WHERE s.id = ? 
+      AND sc.course_code IS NULL 
+      AND (nc.prerequisite_course_code IS NULL OR scp.course_code IS NOT NULL)
+      AND e.course_id IS NULL  -- Exclude already enrolled courses
+    ORDER BY nc.course_code;
+  `;
+
+  try {
+    const [rows] = await pool.promise().query(query, [studentId]);
+    res.json(rows); // Return the data to the frontend
+  } catch (error) {
+    console.error("Error fetching eligible courses:", error);
+    res.status(500).json({ error: "Failed to fetch eligible courses" });
+  }
+};

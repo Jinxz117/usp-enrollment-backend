@@ -8,6 +8,9 @@ router.get('/program-courses/:studentId', enrollmentController.getEligibleCourse
 // Endpoint to get eligible courses for enrollment
 router.get('/eligible-courses/:studentId', enrollmentController.getEligibleCoursesForEnrollment);
 
+// Endpoint to get eligible courses for enrollment1
+router.get('/eligible-courses1/:studentId', enrollmentController.getEligibleCoursesForEnrollment1);
+
 // ✅ Enroll student in a course
 router.post("/enroll", enrollmentController.enrollStudent);
 
