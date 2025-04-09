@@ -11,6 +11,7 @@ const gradeRoutes = require("./Routes/gradeRoutes");
 const financeRoutes = require("./Routes/financeRoutes");
 const enrollmentRoutes = require("./Routes/enrollmentRoutes");
 const programRequirementRoutes = require("./Routes/programRequirementRoutes");
+const logErrorToFile = require("./utils/logger");
 
 const app = express();
 app.use(express.json());
@@ -24,6 +25,17 @@ app.use('/api', gradeRoutes);
 app.use("/api/finances", financeRoutes);
 app.use('/api', enrollmentRoutes);
 app.use('/api/program-requirements', programRequirementRoutes);
+
+// Override console.error to log errors to a file
+const originalConsoleError = console.error;
+console.error = (...args) => {
+  // Log the error to the console
+  originalConsoleError(...args);
+
+  // Log the error to the file
+  const errorMessage = args.map(arg => (typeof arg === "object" ? JSON.stringify(arg, null, 2) : arg)).join(" ");
+  logErrorToFile(errorMessage);
+};
 
 
 // // Signup Route (Register User)
@@ -175,6 +187,15 @@ app.get("/test-db", async (req, res) => {
     console.error("Database connection failed:", error);
     res.status(500).json({ error: "Database connection failed", code: "DB_CONNECTION_ERROR" });
   }
+});
+
+// Global Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error:", err); // This will log to both console and file
+  res.status(err.status || 500).json({
+    error: err.message || "Internal Server Error",
+    code: err.code || "INTERNAL_SERVER_ERROR",
+  });
 });
 
 // Start Server

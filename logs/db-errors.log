@@ -1,0 +1,4 @@
+[2025-04-09T08:54:27.339Z] Error: Table 'usp_enrollment.student' doesn't exist
+Query: SELECT * FROM student WHERE email = ?
+Params: ["vbjhxf"]
+

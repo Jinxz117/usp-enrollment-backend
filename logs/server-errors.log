@@ -1,0 +1,15 @@
+[2025-04-09T08:54:27.337Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "SELECT * FROM student WHERE email = 'vbjhxf'",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student' doesn't exist"
+}
+
+[2025-04-09T08:54:27.339Z] Error during login: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student' doesn't exist"
+}
+
