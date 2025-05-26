@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const port = 6969;
+const port = 4149;
 
 // Routes
 app.use('/api', studentRoutes);
@@ -116,7 +116,7 @@ app.post("/signup", async (req, res) => {
     // Check if user already exists
     const [existingUser] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
     if (existingUser.length > 0) {
-      return res.status(400).json({ error: "Email already in use", code: "EMAIL_ALREADY_IN_USE" });
+      return res.status(400).json({ error: "Email already in use", code: "EMAIL_ALREADY_IN_USE" }); //error goes to console n logger
     }
 
     // Hash password
