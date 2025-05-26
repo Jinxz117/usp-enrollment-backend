@@ -39,6 +39,23 @@
 const db = require("./db");
 
 const StudentModel = {
+  getStudentByStudentId: async (studentId) => {
+    try {
+      const query = `
+        SELECT students.*, program_name AS program_name 
+        FROM students 
+        JOIN programs ON students.program_id = program_id 
+        WHERE students.id = ?;
+      `;
+
+      const [rows] = await db.query(query, [studentId]);
+
+      return rows.length ? rows[0] : null;
+    } catch (error) {
+      console.error("Error fetching student by student ID:", error);
+      throw { code: "GET_STUDENT_BY_STUDENT_ID_ERROR", message: "Failed to fetch student by student ID", details: error.message };
+    }
+  },
   // ✅ Get student by user ID
   getStudentByUserId: async (studentId) => {
     try {

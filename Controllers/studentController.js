@@ -1,5 +1,27 @@
-const StudentModel = require("../Model/studentmodel");
+const StudentModel = require("../Model/studentModel");
 
+
+// ✅ Get student details based on internal student ID from request params
+exports.getStudentByStudentId = async (req, res) => {
+  const studentId = req.params.id; // Get student ID from request params
+
+  if (!studentId) {
+    return res.status(400).json({ message: "Student ID is required", code: "STUDENT_ID_REQUIRED" });
+  }
+
+  try {
+    const student = await StudentModel.getStudentByStudentId(studentId);
+
+    if (!student) {
+      return res.status(404).json({ message: "Student not found", code: "STUDENT_NOT_FOUND" });
+    }
+
+    res.json(student);
+  } catch (error) {
+    console.error("Error fetching student by student ID:", error);
+    res.status(500).json({ message: "Server error", code: "GET_STUDENT_BY_STUDENT_ID_ERROR" });
+  }
+};
 // ✅ Get student details based on user ID from request params
 exports.getStudentById = async (req, res) => {
   const userId = req.params.id; // Get user ID from request params
