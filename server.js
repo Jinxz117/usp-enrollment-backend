@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt");
 //const { pool } = require("./Model/db"); // Import connection pool
 
 const db = require("./Model/db"); // Import the updated db.js
-
+const servicesRoutes = require("./Routes/servicesRoutes");
+const staffRoutes = require("./Routes/staffRoutes");
 const studentRoutes = require("./Routes/studentRoutes"); // Ensure correct path
 const gradeRoutes = require("./Routes/gradeRoutes");
 const financeRoutes = require("./Routes/financeRoutes");
@@ -20,6 +21,8 @@ app.use(cors());
 const port = 4149;
 
 // Routes
+app.use("/api", servicesRoutes); // Ensure this is the correct path for servicesRoutes
+app.use("/api", staffRoutes); 
 app.use('/api', studentRoutes);
 app.use('/api', gradeRoutes);
 app.use("/api/finances", financeRoutes);
