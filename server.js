@@ -13,6 +13,8 @@ const financeRoutes = require("./Routes/financeRoutes");
 const enrollmentRoutes = require("./Routes/enrollmentRoutes");
 const programRequirementRoutes = require("./Routes/programRequirementRoutes");
 const logErrorToFile = require("./utils/logger");
+const transcriptRoutes = require('./Routes/transcriptRoutes');
+
 
 const app = express();
 app.use(express.json());
@@ -28,7 +30,7 @@ app.use('/api', gradeRoutes);
 app.use("/api/finances", financeRoutes);
 app.use('/api', enrollmentRoutes);
 app.use('/api/program-requirements', programRequirementRoutes);
-
+app.use('/api', transcriptRoutes);
 // Override console.error to log errors to a file
 const originalConsoleError = console.error;
 console.error = (...args) => {

@@ -62,3 +62,34 @@ exports.registerStudent = async (req, res) => {
     res.status(500).json({ message: "Failed to register student", code: "STUDENT_REGISTRATION_ERROR" });
   }
 };
+
+// ✅ Update student hold status
+exports.updateHoldStatus = async (req, res) => {
+  const { id } = req.params;
+  const { is_hold, hold_type } = req.body;
+
+  if (!id || typeof is_hold === "undefined" || typeof hold_type === "undefined") {
+    return res.status(400).json({ message: "id, is_hold, and hold_type are required", code: "MISSING_FIELDS" });
+  }
+
+  try {
+    const updated = await StudentModel.updateHoldStatus(id, is_hold, hold_type);
+    if (!updated) {
+      return res.status(404).json({ message: "Student not found", code: "STUDENT_NOT_FOUND" });
+    }
+    res.json({ message: "Hold status updated successfully" });
+  } catch (error) {
+    console.error("Error updating hold status:", error);
+    res.status(500).json({ message: "Error updating hold status", code: "UPDATE_HOLD_STATUS_ERROR" });
+  }
+};
+
+exports.getAllStudents = async (req, res) => {
+  try {
+    const students = await StudentModel.getAllStudents();
+    res.json(students);
+  } catch (error) {
+    console.error("Error fetching all students:", error);
+    res.status(500).json({ message: "Failed to fetch all students", code: "GET_ALL_STUDENTS_ERROR" });
+  }
+};

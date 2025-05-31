@@ -13,3 +13,172 @@
   "details": "Table 'usp_enrollment.student' doesn't exist"
 }
 
+[2025-05-25T04:12:52.928Z] Error updating service status: {}
+
+[2025-05-25T04:17:13.661Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.213Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.218Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.216Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.221Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.224Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.228Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.231Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.234Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.236Z] Error updating service status: {}
+
+[2025-05-25T04:17:15.239Z] Error updating service status: {}
+
+[2025-05-25T06:11:57.876Z] Error updating service status: {}
+
+[2025-05-25T06:11:59.116Z] Error updating service status: {}
+
+[2025-05-25T06:12:00.915Z] Error updating service status: {}
+
+[2025-05-25T06:12:01.730Z] Error updating service status: {}
+
+[2025-05-25T06:17:45.286Z] Error updating service status: {}
+
+[2025-05-25T06:17:45.902Z] Error updating service status: {}
+
+[2025-05-25T06:17:48.202Z] Error updating service status: {}
+
+[2025-05-25T06:19:10.702Z] Error updating service status: {}
+
+[2025-05-25T06:19:11.580Z] Error updating service status: {}
+
+[2025-05-25T06:19:18.346Z] Error updating service status: {}
+
+[2025-05-25T06:19:22.665Z] Error updating service status: {}
+
+[2025-05-25T06:44:28.428Z] Error updating service status: {}
+
+[2025-05-25T06:45:19.164Z] Error updating service status: {}
+
+[2025-05-25T06:49:45.226Z] Error updating service status: {}
+
+[2025-05-25T07:00:37.358Z] Error updating service status: {}
+
+[2025-05-28T13:08:48.117Z] Error fetching all students: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T13:08:48.117Z] Error fetching all students: {
+  "code": "GET_ALL_STUDENTS_ERROR",
+  "message": "Failed to fetch all students",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T13:08:48.115Z] Database Query Error: {
+  "message": "Unknown column 'programs.program_id' in 'on clause'",
+  "code": "ER_BAD_FIELD_ERROR",
+  "errno": 1054,
+  "sql": "\n        SELECT students.*, programs.program_name\n        FROM students\n        JOIN programs ON students.program_id = programs.program_id\n      ",
+  "sqlState": "42S22",
+  "sqlMessage": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T13:08:52.359Z] Database Query Error: {
+  "message": "Unknown column 'programs.program_id' in 'on clause'",
+  "code": "ER_BAD_FIELD_ERROR",
+  "errno": 1054,
+  "sql": "\n        SELECT students.*, programs.program_name\n        FROM students\n        JOIN programs ON students.program_id = programs.program_id\n      ",
+  "sqlState": "42S22",
+  "sqlMessage": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T13:08:52.360Z] Error fetching all students: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T13:08:52.361Z] Error fetching all students: {
+  "code": "GET_ALL_STUDENTS_ERROR",
+  "message": "Failed to fetch all students",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T14:48:10.077Z] Error fetching all students: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T14:48:10.077Z] Error fetching all students: {
+  "code": "GET_ALL_STUDENTS_ERROR",
+  "message": "Failed to fetch all students",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T14:48:10.076Z] Database Query Error: {
+  "message": "Unknown column 'programs.program_id' in 'on clause'",
+  "code": "ER_BAD_FIELD_ERROR",
+  "errno": 1054,
+  "sql": "\n        SELECT students.*, programs.program_name\n        FROM students\n        JOIN programs ON students.program_id = programs.program_id\n      ",
+  "sqlState": "42S22",
+  "sqlMessage": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T14:49:42.892Z] Database Query Error: {
+  "message": "Unknown column 'programs.program_id' in 'on clause'",
+  "code": "ER_BAD_FIELD_ERROR",
+  "errno": 1054,
+  "sql": "\n        SELECT students.*, programs.program_name\n        FROM students\n        JOIN programs ON students.program_id = programs.program_id\n      ",
+  "sqlState": "42S22",
+  "sqlMessage": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T14:49:42.892Z] Error fetching all students: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T14:49:42.893Z] Error fetching all students: {
+  "code": "GET_ALL_STUDENTS_ERROR",
+  "message": "Failed to fetch all students",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T14:49:44.019Z] Database Query Error: {
+  "message": "Unknown column 'programs.program_id' in 'on clause'",
+  "code": "ER_BAD_FIELD_ERROR",
+  "errno": 1054,
+  "sql": "\n        SELECT students.*, programs.program_name\n        FROM students\n        JOIN programs ON students.program_id = programs.program_id\n      ",
+  "sqlState": "42S22",
+  "sqlMessage": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T14:49:44.020Z] Error fetching all students: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Unknown column 'programs.program_id' in 'on clause'"
+}
+
+[2025-05-28T14:49:44.020Z] Error fetching all students: {
+  "code": "GET_ALL_STUDENTS_ERROR",
+  "message": "Failed to fetch all students",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-31T03:25:12.101Z] Unhandled Error: {
+  "errno": -4058,
+  "code": "ENOENT",
+  "syscall": "stat",
+  "path": "C:\\Users\\Prerana Lal\\OneDrive\\Desktop\\React\\usp-enrollment-backend\\USP-Enrollment-Backend\\transcripts\\transcript_3.pdf",
+  "expose": false,
+  "statusCode": 404,
+  "status": 404
+}
+

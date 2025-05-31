@@ -91,6 +91,35 @@ const StudentModel = {
       throw { code: "REGISTER_STUDENT_ERROR", message: "Failed to register student", details: error.message };
     }
   },
+
+  getAllStudents: async () => {
+    try {
+      const query = `
+        SELECT *
+        FROM students
+        
+      `;
+      const [rows] = await db.query(query);
+      return rows;
+    } catch (error) {
+      console.error("Error fetching all students:", error);
+      throw { code: "GET_ALL_STUDENTS_ERROR", message: "Failed to fetch all students", details: error.message };
+    }
+  },
+  updateHoldStatus: async (studentId, is_hold, hold_type) => {
+    try {
+      const query = `
+        UPDATE students
+        SET is_hold = ?, hold_type = ?
+        WHERE id = ?;
+      `;
+      const [result] = await db.query(query, [is_hold, hold_type, studentId]);
+      return result.affectedRows > 0;
+    } catch (error) {
+      console.error("Error updating hold status:", error);
+      throw { code: "UPDATE_HOLD_STATUS_ERROR", message: "Failed to update hold status", details: error.message };
+    }
+  },
 };
 
 module.exports = StudentModel;
