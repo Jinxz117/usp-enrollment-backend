@@ -62,3 +62,43 @@ Query:
       
 Params: ["3"]
 
+[2025-05-28T13:08:48.116Z] Error: Unknown column 'programs.program_id' in 'on clause'
+Query: 
+        SELECT students.*, programs.program_name
+        FROM students
+        JOIN programs ON students.program_id = programs.program_id
+      
+Params: []
+
+[2025-05-28T13:08:52.360Z] Error: Unknown column 'programs.program_id' in 'on clause'
+Query: 
+        SELECT students.*, programs.program_name
+        FROM students
+        JOIN programs ON students.program_id = programs.program_id
+      
+Params: []
+
+[2025-05-28T14:48:10.076Z] Error: Unknown column 'programs.program_id' in 'on clause'
+Query: 
+        SELECT students.*, programs.program_name
+        FROM students
+        JOIN programs ON students.program_id = programs.program_id
+      
+Params: []
+
+[2025-05-28T14:49:42.892Z] Error: Unknown column 'programs.program_id' in 'on clause'
+Query: 
+        SELECT students.*, programs.program_name
+        FROM students
+        JOIN programs ON students.program_id = programs.program_id
+      
+Params: []
+
+[2025-05-28T14:49:44.019Z] Error: Unknown column 'programs.program_id' in 'on clause'
+Query: 
+        SELECT students.*, programs.program_name
+        FROM students
+        JOIN programs ON students.program_id = programs.program_id
+      
+Params: []
+

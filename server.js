@@ -27,6 +27,8 @@ const accessFormRoutes = require("./Routes/accessFormRoutes");
 // forms routes - admin access forms
 const formsRoutes = require("./Routes/forms");
 
+const transcriptRoutes = require('./Routes/transcriptRoutes');
+
 
 const app = express();
 app.use(express.json());
