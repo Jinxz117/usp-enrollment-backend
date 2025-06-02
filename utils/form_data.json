@@ -1,0 +1,349 @@
+{
+  "graduation": [
+    {
+      "fullName": "Jane Doe",
+      "title": "Ms",
+      "Id": "S1234567",
+      "dob": "1998-07-15",
+      "telephone": "123456789",
+      "email": "jane@example.com",
+      "address": "123 USP Street",
+      "program": "Bachelor of Science",
+      "gradSemester": "2025 Semester 1",
+      "declaration": "I confirm the details are correct.",
+      "appDate": "2025-06-02",
+      "appSignature": "Jane Doe"
+    }
+  ],
+  "compassionate": [
+    {
+      "fullName": "John Smith",
+      "title": "Mr",
+      "Id": "S7654321",
+      "dob": "1999-02-20",
+      "telephone": "987654321",
+      "email": "john@example.com",
+      "address": "456 USP Avenue",
+      "year": "3",
+      "campus": "Laucala",
+      "reason": "Medical emergency",
+      "appDate": "2025-06-02",
+      "filePath": "/uploads/medical_doc123.pdf",
+      "applicationType": {
+        "Aegrotat": true,
+        "Special": false,
+        "Compassionate": true
+      },
+      "missedExams": [
+        {
+          "course": "CS211",
+          "date": "2025-05-20"
+        },
+        {
+          "course": "IS222",
+          "date": "2025-05-22"
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mr",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "student@example.com",
+      "address": "dfff",
+      "campus": "halo",
+      "reason": "tum",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": true
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseCode": "",
+          "reason": ""
+        }
+      ],
+      "missedExams": [
+        {
+          "courseId": "6",
+          "examDate": "2025-06-05",
+          "examTime": "06:41"
+        }
+      ],
+      "filePath": ""
+    }
+  ],
+  "resit": [
+    {
+      "fullName": "Alice Brown",
+      "title": "Ms",
+      "Id": "3",
+      "dob": "2000-03-05",
+      "telephone": "1122334455",
+      "email": "alice@example.com",
+      "address": "789 USP Drive",
+      "resitCourses": [
+        {
+          "course": "MA101",
+          "reason": "Medical Leave"
+        },
+        {
+          "course": "PH102",
+          "reason": "Family Emergency"
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mr",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "student@example.com",
+      "address": "dfff",
+      "campus": "",
+      "reason": "",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": false
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseId": "CS111 - Introduction to Computer Science",
+          "reason": "hi"
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mr",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "narayanshivneel@gmail.com",
+      "address": "dfff",
+      "campus": "halo",
+      "reason": "tum",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": true
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseId": "CS111 - Introduction to Computer Science",
+          "reason": "hi"
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mr",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "narayanshivneel@gmail.com",
+      "address": "dfff",
+      "campus": "halo",
+      "reason": "tum",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": true
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseId": "CS111 - Introduction to Computer Science",
+          "reason": "hi"
+        }
+      ]
+    },
+    {
+      "fullName": "Alice Brown",
+      "title": "Ms",
+      "Id": "3",
+      "dob": "2000-03-05",
+      "telephone": "1122334455",
+      "email": "alice@example.com",
+      "address": "789 USP Drive",
+      "resitCourses": [
+        {
+          "course": "MA101",
+          "reason": "Medical Leave"
+        },
+        {
+          "course": "PH102",
+          "reason": "Family Emergency"
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mr",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "student@example.com",
+      "address": "zoom",
+      "campus": "",
+      "reason": "",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": false
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseId": "CS111 - Introduction to Computer Science",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mr",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "narayanshivneel@gmail.com",
+      "address": "kingf",
+      "campus": "",
+      "reason": "",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": false
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseId": "MA161 - Computing Mathematics",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "fullName": "John Doe",
+      "title": "mrs",
+      "Id": 3,
+      "dob": "1999-12-31",
+      "telephone": "1234567890",
+      "email": "narayanshivneel@gmail.com",
+      "address": "kingfing",
+      "campus": "",
+      "reason": "",
+      "appDate": "",
+      "appSignature": "",
+      "applicationType": {
+        "compassionate": false,
+        "aegrotat": false,
+        "special": false
+      },
+      "medical": {
+        "comments": "",
+        "unable": false,
+        "impaired": false,
+        "fine": false,
+        "medOfficerName": "",
+        "medOfficerSign": "",
+        "medDate": ""
+      },
+      "program": "Computer Science",
+      "gradSemester": "",
+      "declaration": "",
+      "resitCourses": [
+        {
+          "courseId": "UU114 - English Language Skills for Tertiary Studies",
+          "reason": ""
+        }
+      ]
+    }
+  ]
+}
