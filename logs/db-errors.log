@@ -2,3 +2,63 @@
 Query: SELECT * FROM student WHERE email = ?
 Params: ["vbjhxf"]
 
+[2025-05-28T11:40:24.681Z] Error: Table 'usp_enrollment.student_services' doesn't exist
+Query: 
+        SELECT student_services.*, s.service_name
+        FROM student_services
+        JOIN students ON student_services.student_id = students.id
+        JOIN services s ON student_services.service_id = s.id
+        WHERE students.id = ?;
+      
+Params: ["3"]
+
+[2025-05-28T11:40:25.909Z] Error: Table 'usp_enrollment.student_services' doesn't exist
+Query: 
+        SELECT student_services.*, s.service_name
+        FROM student_services
+        JOIN students ON student_services.student_id = students.id
+        JOIN services s ON student_services.service_id = s.id
+        WHERE students.id = ?;
+      
+Params: ["3"]
+
+[2025-05-28T11:46:56.856Z] Error: Table 'usp_enrollment.student_services' doesn't exist
+Query: 
+        SELECT student_services.*, s.service_name
+        FROM student_services
+        JOIN students ON student_services.student_id = students.id
+        JOIN services s ON student_services.service_id = s.id
+        WHERE students.id = ?;
+      
+Params: ["3"]
+
+[2025-05-28T11:46:59.745Z] Error: Table 'usp_enrollment.student_services' doesn't exist
+Query: 
+        SELECT student_services.*, s.service_name
+        FROM student_services
+        JOIN students ON student_services.student_id = students.id
+        JOIN services s ON student_services.service_id = s.id
+        WHERE students.id = ?;
+      
+Params: ["3"]
+
+[2025-05-28T11:47:00.456Z] Error: Table 'usp_enrollment.student_services' doesn't exist
+Query: 
+        SELECT student_services.*, s.service_name
+        FROM student_services
+        JOIN students ON student_services.student_id = students.id
+        JOIN services s ON student_services.service_id = s.id
+        WHERE students.id = ?;
+      
+Params: ["3"]
+
+[2025-05-28T11:47:01.553Z] Error: Table 'usp_enrollment.student_services' doesn't exist
+Query: 
+        SELECT student_services.*, s.service_name
+        FROM student_services
+        JOIN students ON student_services.student_id = students.id
+        JOIN services s ON student_services.service_id = s.id
+        WHERE students.id = ?;
+      
+Params: ["3"]
+

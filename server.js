@@ -14,6 +14,20 @@ const enrollmentRoutes = require("./Routes/enrollmentRoutes");
 const programRequirementRoutes = require("./Routes/programRequirementRoutes");
 const logErrorToFile = require("./utils/logger");
 
+// doc upload
+// Ensure the uploadRoutes file exists and is correctly implemented
+const uploadRoutes = require("./Routes/uploadRoutes");
+const applicationRoutes = require("./Routes/applicationRoutes");
+
+// to get student courses
+const studentcoursesRoutes = require("./Routes/studentcoursesRoutes");
+
+// routes for access form submission
+const accessFormRoutes = require("./Routes/accessFormRoutes");
+// forms routes - admin access forms
+const formsRoutes = require("./Routes/forms");
+
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -29,6 +43,20 @@ app.use("/api/finances", financeRoutes);
 app.use('/api', enrollmentRoutes);
 app.use('/api/program-requirements', programRequirementRoutes);
 
+//upload routes
+app.use("/api", uploadRoutes);
+// application routes
+app.use("/api", applicationRoutes);
+// stuednt courses routes
+app.use("/api", studentcoursesRoutes);
+// access form submission routes
+app.use("/api", accessFormRoutes);
+// forms routes - admin access forms
+app.use("/api/forms", formsRoutes);
+
+// Serve static files from the uploads directory
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Override console.error to log errors to a file
 const originalConsoleError = console.error;
 console.error = (...args) => {
@@ -39,6 +67,7 @@ console.error = (...args) => {
   const errorMessage = args.map(arg => (typeof arg === "object" ? JSON.stringify(arg, null, 2) : arg)).join(" ");
   logErrorToFile(errorMessage);
 };
+
 
 
 // // Signup Route (Register User)
@@ -158,6 +187,9 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid email or password", code: "INVALID_CREDENTIALS" });
     }
 
+    // Log user login info
+    console.log(`\n User logged in: id=${user.id}, email=${user.email}, role_id=${user.role_id}`);
+
     // Send success response
     res.status(200).json({
       message: "Login successful",
@@ -201,7 +233,9 @@ app.use((err, req, res, next) => {
   });
 });
 
+
 // Start Server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+

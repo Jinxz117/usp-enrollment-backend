@@ -13,3 +13,140 @@
   "details": "Table 'usp_enrollment.student' doesn't exist"
 }
 
+[2025-05-28T11:40:24.679Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student_services' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "\n        SELECT student_services.*, s.service_name\n        FROM student_services\n        JOIN students ON student_services.student_id = students.id\n        JOIN services s ON student_services.service_id = s.id\n        WHERE students.id = '3';\n      ",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:40:24.682Z] Error fetching services by student ID: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:40:24.684Z] Error fetching services: {
+  "code": "GET_SERVICES_BY_STUDENT_ID_ERROR",
+  "message": "Failed to fetch services",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T11:40:25.909Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student_services' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "\n        SELECT student_services.*, s.service_name\n        FROM student_services\n        JOIN students ON student_services.student_id = students.id\n        JOIN services s ON student_services.service_id = s.id\n        WHERE students.id = '3';\n      ",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:40:25.910Z] Error fetching services by student ID: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:40:25.911Z] Error fetching services: {
+  "code": "GET_SERVICES_BY_STUDENT_ID_ERROR",
+  "message": "Failed to fetch services",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T11:46:56.855Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student_services' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "\n        SELECT student_services.*, s.service_name\n        FROM student_services\n        JOIN students ON student_services.student_id = students.id\n        JOIN services s ON student_services.service_id = s.id\n        WHERE students.id = '3';\n      ",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:46:56.857Z] Error fetching services by student ID: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:46:56.858Z] Error fetching services: {
+  "code": "GET_SERVICES_BY_STUDENT_ID_ERROR",
+  "message": "Failed to fetch services",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T11:46:59.741Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student_services' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "\n        SELECT student_services.*, s.service_name\n        FROM student_services\n        JOIN students ON student_services.student_id = students.id\n        JOIN services s ON student_services.service_id = s.id\n        WHERE students.id = '3';\n      ",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:46:59.749Z] Error fetching services by student ID: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:46:59.780Z] Error fetching services: {
+  "code": "GET_SERVICES_BY_STUDENT_ID_ERROR",
+  "message": "Failed to fetch services",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T11:47:00.456Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student_services' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "\n        SELECT student_services.*, s.service_name\n        FROM student_services\n        JOIN students ON student_services.student_id = students.id\n        JOIN services s ON student_services.service_id = s.id\n        WHERE students.id = '3';\n      ",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:47:00.480Z] Error fetching services by student ID: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:47:00.491Z] Error fetching services: {
+  "code": "GET_SERVICES_BY_STUDENT_ID_ERROR",
+  "message": "Failed to fetch services",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-05-28T11:47:01.553Z] Database Query Error: {
+  "message": "Table 'usp_enrollment.student_services' doesn't exist",
+  "code": "ER_NO_SUCH_TABLE",
+  "errno": 1146,
+  "sql": "\n        SELECT student_services.*, s.service_name\n        FROM student_services\n        JOIN students ON student_services.student_id = students.id\n        JOIN services s ON student_services.service_id = s.id\n        WHERE students.id = '3';\n      ",
+  "sqlState": "42S02",
+  "sqlMessage": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:47:01.555Z] Error fetching services by student ID: {
+  "code": "DB_QUERY_ERROR",
+  "message": "An error occurred while executing the database query.",
+  "details": "Table 'usp_enrollment.student_services' doesn't exist"
+}
+
+[2025-05-28T11:47:01.556Z] Error fetching services: {
+  "code": "GET_SERVICES_BY_STUDENT_ID_ERROR",
+  "message": "Failed to fetch services",
+  "details": "An error occurred while executing the database query."
+}
+
+[2025-06-02T09:41:49.421Z] Error in getStudentCourses: db.execute is not a function TypeError: db.execute is not a function
+    at exports.getStudentCourses (C:\Users\naray\Documents\GitHub\usp-enrollment-backend\Controllers\studentcoursesController.js:23:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+[2025-06-02T16:00:30.035Z] Email error: {
+  "code": "EAUTH",
+  "response": "535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-747afe9680bsm8026140b3a.18 - gsmtp",
+  "responseCode": 535,
+  "command": "AUTH PLAIN"
+}
+
